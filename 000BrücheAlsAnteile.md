@@ -224,4 +224,4 @@ $\frac{2}{3}\cdot 27kg=2\cdot 27kg:3=18kg$
 </script>
 
 ### 💪🏼Brucharten 💪🏼
-5. https://mathe.aufgabenfuchs.de/bruch/bruchteile.shtml
+5. <https://mathe.aufgabenfuchs.de/bruch/bruchteile.shtml>
