@@ -29,6 +29,20 @@
   <!--[if lt IE 9]>
   <script src="https://revealjs.com/lib/js/html5shiv.js"></script>
   <![endif]-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
 </head>
 <body>
   <div class="reveal">
@@ -38,9 +52,238 @@
   <h1 class="title">Brüche als Anteile</h1>
 </section>
 
+<section id="section" class="slide level3">
+<h3></h3>
+<p><img src=".\Abbildungen\Torte.svg" style="float:center; max-width:50%"></p>
+</section>
 <section id="brüche-als-anteile" class="slide level3">
-<h3>Brüche als Anteile</h3>
-<p><img src=".\Abbildungen\BrücheAlsAnteile.png" style="float:right;max-width:30%"></p>
+<h3>💡Brüche als Anteile💡</h3>
+<img src=".\Abbildungen\BrücheAlsAnteile.png" style="float:center;max-width:30%"><br />
+
+<ul>
+<li>
+Der <strong>Zähler</strong> gibt die Anzahl der Teile an, die betrachtet werden.
+</li>
+<li>
+Der <strong>Nenner</strong> gibt an, in wie viele Teile ein Ganzes zerlegt wird.
+</li>
+</ul>
+<p>Beispiel: <span class="math inline">\frac{2}{3}</span> von 27kg sind <span class="math inline">\frac{2}{3}\cdot 27kg=2\cdot 27kg:3=18kg</span></p>
+</section>
+<section id="brüche-als-anteile-1" class="slide level3">
+<h3>💪🏼Brüche als Anteile💪🏼</h3>
+<ol type="1">
+<li>LB S. 7 Nr. 4</li>
+<li>LB S. 7 Nr. 5</li>
+</ol>
+</section>
+<section id="brucharten" class="slide level3">
+<h3>💡Brucharten💡</h3>
+<img src=".\Abbildungen\Brucharten.png" style="float:center; max-width:50%"><br />
+<font size="6">
+<ul>
+<li>
+Stammbruch: <strong>Ein</strong> Teil eines Ganzen; z.B. <span class="math inline">\frac{1}{2}, \frac{1}{3}, \frac{1}{4}\dots</span>
+</li>
+<li>
+Echter Bruch: Anteil, der <strong>kleiner</strong> als das Ganze ist, z.B. <span class="math inline">\frac{1}{4}, \frac{2}{4}, \frac{3}{4}</span>
+</li>
+<li>
+Unechter Bruch: Anteil, der <strong>gleich</strong> oder <strong>größer</strong> als das Ganze ist, z.B. <span class="math inline">\frac{4}{4}, \frac{5}{4}, \frac{6}{4}, \dots</span>
+</li>
+<li>
+Gemischter Bruch: Unechter Bruch, der in ganzzahligem Anteil und verbleibendem Anteil unterteilt wird, z.B. <span class="math inline">1\frac{1}{3}, 2\frac{3}{4}, \dots</span>
+</li>
+<li>
+Dezimalbruch: Bruch, der als Dezimalzahl mit Komma beschrieben wird, z.B. <span class="math inline">0.5, 0.25, 0.\overline{3}\dots</span>
+</li>
+</ul>
+<p></font></p>
+</section>
+<section id="brucharten-1" class="slide level3">
+<h3>💪🏼Brucharten 💪🏼</h3>
+<ol start="3" type="1">
+<li><p>LB S. 7 Nr. 6</p></li>
+<li><p>Um welche Art von Bruch handelt es sich?</p></li>
+</ol>
+<div id="aufgabeBrucharten">
+
+</div>
+<form>
+<fieldset>
+<ul>
+<li>
+<label> <input type="checkbox" name="bruch" id="stammbruch"> Stammbruch </label>
+</li>
+<li>
+<label> <input type="checkbox" name="bruch" id="echterBruch"> Echter Bruch </label>
+</li>
+<li>
+<label> <input type="checkbox" name="bruch" id="unechterBruch"> Unechter Bruch </label>
+</li>
+<li>
+<label> <input type="checkbox" name="bruch" id="gemischterBruch"> Gemischter Bruch </label>
+</li>
+<li>
+<label> <input type="checkbox" name="bruch" id="dezimalbruch"> Dezimalbruch </label>
+</li>
+</ul>
+</fieldset>
+<button type="button" id="auswerten">
+Überprüfen
+</button>
+<p id="ergebnis">
+</p>
+<button type="button" id="reset">
+Neue Zahl
+</button>
+</form>
+<script>
+  const aufgabeBrucharten = document.getElementById("aufgabeBrucharten");
+  const auswertenButton = document.getElementById("auswerten");
+  const resetButton = document.getElementById("reset");
+  const ergebnis = document.getElementById("ergebnis");
+  const stammbruch = document.getElementById("stammbruch");
+  const echterBruch = document.getElementById("echterBruch");
+  const unechterBruch = document.getElementById("unechterBruch");
+  const gemischterBruch = document.getElementById("gemischterBruch");
+  const dezimalbruch = document.getElementById("dezimalbruch");
+  var rand;
+  var nenner;// = Math.floor(Math.random()*100+2);
+  var zaehler;// = Math.floor(Math.random()*100+1);
+  var koef;
+  function resetFunction(){
+    ergebnis.innerHTML = "";
+    stammbruch.checked = false;
+    echterBruch.checked = false;
+    unechterBruch.checked = false;
+    gemischterBruch.checked = false;
+    dezimalbruch.checked = false;
+    rand = Math.floor(Math.random()*6);
+    switch (rand) {
+      case 0:
+        nenner = Math.floor(Math.random()*100+2);
+        katex.render("\\frac{1}{"+nenner+"}", aufgabeBrucharten, {throwOnError: false});
+        break;
+      case 1:
+        do{
+          zaehler = Math.floor(Math.random()*100+2);
+          nenner = Math.floor(Math.random()*100+3);
+        }while(zaehler>=nenner);
+        katex.render("\\frac{"+zaehler+"}{"+nenner+"}", aufgabeBrucharten, {throwOnError: false});
+        break;
+      case 2:
+        do{
+          zaehler = Math.floor(Math.random()*100+2);
+          nenner = Math.floor(Math.random()*100+1);
+        }while(zaehler<nenner);
+        katex.render("\\frac{"+zaehler+"}{"+nenner+"}", aufgabeBrucharten, {throwOnError: false});
+        break;
+      case 3:
+        do{
+          zaehler = Math.floor(Math.random()*100+1);
+          nenner = Math.floor(Math.random()*100+2);
+          koef = Math.floor(Math.random()*100+1);
+        }while(zaehler>=nenner);
+        katex.render(koef+"\\frac{"+zaehler+"}{"+nenner+"}", aufgabeBrucharten, {throwOnError: false});
+        break;
+      case 4:
+        koef = Math.floor(Math.random()*50)*Math.floor(Math.random()*3);
+        katex.render(""+koef+"."+Math.floor(Math.random()*100+1), aufgabeBrucharten, {throwOnError: false});
+        break;
+      case 5:
+        koef = Math.floor(Math.random()*50)*Math.floor(Math.random()*3);
+        katex.render(""+koef+".\\overline{"+Math.floor(Math.random()*100+1)+"}", aufgabeBrucharten, {throwOnError: false});
+        break;
+    }
+  }
+  resetFunction();
+  auswertenButton.addEventListener("click", auswertenFunction);
+  resetButton.addEventListener("click", resetFunction);
+  function auswertenFunction(){
+    if(rand==0){
+      if(!unechterBruch.checked && !gemischterBruch.checked && !dezimalbruch.checked){
+        if(stammbruch.checked && echterBruch.checked){
+          ergebnis.innerHTML = "Richtig!";
+        }else if(stammbruch.checked || echterBruch.checked){
+          ergebnis.innerHTML = "Richtig, aber noch nicht vollständig.";
+        }else{
+          ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+        }
+      }else{
+        ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+      }
+    }
+    if(rand==1){
+      if(!stammbruch.checked && !unechterBruch.checked && !gemischterBruch.checked && !dezimalbruch.checked){
+        if(echterBruch.checked){
+          ergebnis.innerHTML = "Richtig!";
+        }else{
+          ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+        }
+      }else{
+        ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+      }
+    }
+    if(rand==2){
+      if(!stammbruch.checked && !echterBruch.checked && !gemischterBruch.checked && !dezimalbruch.checked){
+        if(unechterBruch.checked){
+          ergebnis.innerHTML = "Richtig!";
+        }else{
+          ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+        }
+      }else{
+        ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+      }
+    }
+    if(rand==3){
+      if(!stammbruch.checked && !echterBruch.checked && !dezimalbruch.checked){
+        if(unechterBruch.checked && gemischterBruch.checked){
+          ergebnis.innerHTML = "Richtig!";
+        }else if(unechterBruch.checked || gemischterBruch.checked){
+          ergebnis.innerHTML = "Richtig, aber noch nicht vollständig.";
+        }else{
+          ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+        }
+      }else{
+        ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+      }
+    }
+    if(rand==4 || rand==5){
+      if(koef == 0){
+        if(!stammbruch.checked && !unechterBruch.checked && !gemischterBruch.checked){
+          if(echterBruch.checked && dezimalbruch.checked){
+            ergebnis.innerHTML = "Richtig!";
+          }else if(echterBruch.checked || dezimalbruch.checked){
+            ergebnis.innerHTML = "Richtig, aber noch nicht vollständig.";
+          }else{
+            ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+          }
+        }else{
+          ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+        }
+      }else{
+        if(!stammbruch.checked && !echterBruch.checked && !gemischterBruch.checked){
+          if(unechterBruch.checked && dezimalbruch.checked){
+            ergebnis.innerHTML = "Richtig!";
+          }else if(unechterBruch.checked || dezimalbruch.checked){
+            ergebnis.innerHTML = "Richtig, aber noch nicht vollständig.";
+          }else{
+            ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+          }
+        }else{
+          ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
+        }
+      }
+    }
+  }
+</script>
+</section>
+<section id="brucharten-2" class="slide level3">
+<h3>💪🏼Brucharten 💪🏼</h3>
+<ol start="5" type="1">
+<li>https://mathe.aufgabenfuchs.de/bruch/bruchteile.shtml</li>
+</ol>
 </section>
     </div>
   </div>
@@ -54,6 +297,11 @@
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: "95%",
+        height: "95%",
 
         // Optional reveal.js plugins
         dependencies: [
