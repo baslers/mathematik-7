@@ -3,8 +3,8 @@
 ---
 revealjs-url: ../../reveal.js
 theme: white
-width: \"95%\"
-height: \"95%\"
+width: \"96%\"
+height: \"96%\"
 header-includes:
     <style>
     .beispiel {
