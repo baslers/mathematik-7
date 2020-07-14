@@ -1,4 +1,4 @@
-% Test
+% Test zu Brüchen
 
 ---
 header-includes:
@@ -38,9 +38,6 @@ header-includes:
 <div style="font-weight:bold; text-align:center">Alle Lösungswege sind ordentlich, vollständig und nachvollziehbar aufzuschreiben.</div>
 <div style="font-weight:bold; text-align:center">Erlaubte Hilfsmittel: Taschenrechner, Tafelwerk, Schreib- und Zeichenutensilien</div>  
 <br><br>
-<div style="float:left"><span class="aufgabe" style="font-weight:bold"></span>Hier steht die erste Aufgabe.</div>
-<div style="float:right">(___/10)</div>
-<div style="clear:both"></div>
-<div style="float:left"><span class="aufgabe" style="font-weight:bold"></span>Hier steht die zweite Aufgabe.</div>
-<div style="float:right">(___/15)</div>
+<div style="float:left"><span class="aufgabe" style="font-weight:bold"></span></div>
+<div style="float:right">(___/)</div>
 <div style="clear:both"></div>
