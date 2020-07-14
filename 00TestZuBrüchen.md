@@ -20,13 +20,13 @@ header-includes:
 
 <table style="width:100%; table-layout:fixed; border-style:solid; border-color:black; font-family: sans-serif">
   <tr>
-    <td style="text-align:left; height:1.5em">Fach</td>
-    <td style="text-align:center; height:1.5em"><span style="font-weight:bold">Klassenarbeit</span></td>
+    <td style="text-align:left; height:1.5em">Mathematik</td>
+    <td style="text-align:center; height:1.5em"><span style="font-weight:bold">Test</span></td>
     <td style="text-align:right; height:1.5em">Datum</td>
   </tr>
   <tr>
     <td style="text-align:left; height:1.5em">Klasse</td>
-    <td style="text-align:center; height:1.5em"></td>
+    <td style="text-align:center; height:1.5em">Brüche</td>
     <td style="text-align:right; height:1.5em">Punkte: ____/____</td>
   </tr>
   <tr>
