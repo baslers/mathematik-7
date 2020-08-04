@@ -197,11 +197,9 @@ $\frac{2}{3}\cdot 27kg=2\cdot 27kg:3=18kg$
       }
     }
     if(rand==3){
-      if(!stammbruch.checked && !echterBruch.checked && !dezimalbruch.checked){
-        if(unechterBruch.checked && gemischterBruch.checked){
+      if(!stammbruch.checked && !echterBruch.checked && !dezimalbruch.checked && !unechterBruch.checked){
+        if(gemischterBruch.checked){
           ergebnis.innerHTML = "Richtig!";
-        }else if(unechterBruch.checked || gemischterBruch.checked){
-          ergebnis.innerHTML = "Richtig, aber noch nicht vollständig.";
         }else{
           ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
         }
@@ -211,11 +209,9 @@ $\frac{2}{3}\cdot 27kg=2\cdot 27kg:3=18kg$
     }
     if(rand==4 || rand==5){
       if(koef == 0){
-        if(!stammbruch.checked && !unechterBruch.checked && !gemischterBruch.checked){
-          if(echterBruch.checked && dezimalbruch.checked){
+        if(!stammbruch.checked && !unechterBruch.checked && !gemischterBruch.checked&& !echterBruch.checked){
+          if(dezimalbruch.checked){
             ergebnis.innerHTML = "Richtig!";
-          }else if(echterBruch.checked || dezimalbruch.checked){
-            ergebnis.innerHTML = "Richtig, aber noch nicht vollständig.";
           }else{
             ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
           }
@@ -223,11 +219,9 @@ $\frac{2}{3}\cdot 27kg=2\cdot 27kg:3=18kg$
           ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
         }
       }else{
-        if(!stammbruch.checked && !echterBruch.checked && !gemischterBruch.checked){
-          if(unechterBruch.checked && dezimalbruch.checked){
+        if(!stammbruch.checked && !echterBruch.checked && !gemischterBruch.checked && !unechterBruch.checked){
+          if(dezimalbruch.checked){
             ergebnis.innerHTML = "Richtig!";
-          }else if(unechterBruch.checked || dezimalbruch.checked){
-            ergebnis.innerHTML = "Richtig, aber noch nicht vollständig.";
           }else{
             ergebnis.innerHTML = "Falsch, versuche es weiter oder sieh dir nochmal die Definitionen an.";
           }
