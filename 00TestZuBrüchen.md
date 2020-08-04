@@ -38,6 +38,16 @@ header-includes:
 <div style="font-weight:bold; text-align:center">Alle Lösungswege sind ordentlich, vollständig und nachvollziehbar aufzuschreiben.</div>
 <div style="font-weight:bold; text-align:center">Erlaubte Hilfsmittel: Taschenrechner, Tafelwerk, Schreib- und Zeichenutensilien</div>  
 <br><br>
-<div style="float:left"><span class="aufgabe" style="font-weight:bold"></span></div>
-<div style="float:right">(___/)</div>
+<div style="float:left"><span class="aufgabe" style="font-weight:bold">Gib jeweils den grau gefärbten Anteil als Bruch an.</span></div>
+<div style="float:right">(___/3)</div>
 <div style="clear:both"></div>
+a) <img id="Kreis_Grafik" style="max-width:20%">
+<script type="text/javascript">
+  var z = Math.floor(Math.random()*9);
+  var n = Math.floor(Math.random()*9);
+  while(z>n || z==0){
+    z = Math.floor(Math.random()*9);
+    n = Math.floor(Math.random()*9);
+  }
+  document.getElementById("Kreis_Grafik").src = ".\\\Abbildungen\\\Kreis_"+z+"_"+n+".png";
+</script>
